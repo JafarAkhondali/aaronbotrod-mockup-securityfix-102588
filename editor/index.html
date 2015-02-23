@@ -113,11 +113,11 @@
 			document.body.appendChild( menubar.dom );
 			document.body.appendChild( script.dom );
 			document.body.appendChild( player.dom );
-
+			document.body.appendChild( sidebar.dom );
 			document.body.appendChild( dialog.dom );
 			if(! window.PRODUCTION) {
 				document.body.appendChild( toolbar.dom );
-				document.body.appendChild( sidebar.dom );
+				
 			} else {
 				//Number in toolbar
 				editor.signals.snapChanged.dispatch(25);

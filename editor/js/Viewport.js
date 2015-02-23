@@ -14,7 +14,6 @@ var Viewport = function ( editor ) {
 		container.add( new Viewport.Info( editor ) );
 	} else {
 		container.setBottom(0);
-		container.setRight(0);
 	}
 	var scene = editor.scene;
 	var sceneHelpers = editor.sceneHelpers;

@@ -52,7 +52,7 @@ Sidebar.Material = function ( editor ) {
 	materialUUIDRow.add( materialUUID );
 	materialUUIDRow.add( materialUUIDRenew );
 
-	container.add( materialUUIDRow );
+	
 
 	// name
 
@@ -66,7 +66,7 @@ Sidebar.Material = function ( editor ) {
 	materialNameRow.add( new UI.Text( 'Name' ).setWidth( '90px' ) );
 	materialNameRow.add( materialName );
 
-	container.add( materialNameRow );
+	
 
 	// class
 
@@ -89,7 +89,7 @@ Sidebar.Material = function ( editor ) {
 	materialClassRow.add( new UI.Text( 'Type' ).setWidth( '90px' ) );
 	materialClassRow.add( materialClass );
 
-	container.add( materialClassRow );
+	
 
 	// color
 
@@ -99,7 +99,7 @@ Sidebar.Material = function ( editor ) {
 	materialColorRow.add( new UI.Text( 'Color' ).setWidth( '90px' ) );
 	materialColorRow.add( materialColor );
 
-	container.add( materialColorRow );
+	
 
 	// ambient
 
@@ -109,7 +109,7 @@ Sidebar.Material = function ( editor ) {
 	materialAmbientRow.add( new UI.Text( 'Ambient' ).setWidth( '90px' ) );
 	materialAmbientRow.add( materialAmbient );
 
-	container.add( materialAmbientRow );
+	
 
 	// emissive
 
@@ -119,8 +119,7 @@ Sidebar.Material = function ( editor ) {
 	materialEmissiveRow.add( new UI.Text( 'Emissive' ).setWidth( '90px' ) );
 	materialEmissiveRow.add( materialEmissive );
 
-	container.add( materialEmissiveRow );
-
+	
 	// specular
 
 	var materialSpecularRow = new UI.Panel();
@@ -129,7 +128,7 @@ Sidebar.Material = function ( editor ) {
 	materialSpecularRow.add( new UI.Text( 'Specular' ).setWidth( '90px' ) );
 	materialSpecularRow.add( materialSpecular );
 
-	container.add( materialSpecularRow );
+
 
 	// shininess
 
@@ -139,7 +138,7 @@ Sidebar.Material = function ( editor ) {
 	materialShininessRow.add( new UI.Text( 'Shininess' ).setWidth( '90px' ) );
 	materialShininessRow.add( materialShininess );
 
-	container.add( materialShininessRow );
+
 
 	// uniforms
 
@@ -150,7 +149,7 @@ Sidebar.Material = function ( editor ) {
 	materialUniformsRow.add( new UI.Text( 'Uniforms' ).setWidth( '90px' ) );
 	materialUniformsRow.add( materialUniforms );
 
-	container.add( materialUniformsRow );
+
 
 	// vertex shader
 
@@ -161,7 +160,7 @@ Sidebar.Material = function ( editor ) {
 	materialVertexShaderRow.add( new UI.Text( 'Vertex Shader' ).setWidth( '90px' ) );
 	materialVertexShaderRow.add( materialVertexShader );
 
-	container.add( materialVertexShaderRow );
+
 
 	// fragment shader
 
@@ -172,7 +171,8 @@ Sidebar.Material = function ( editor ) {
 	materialFragmentShaderRow.add( new UI.Text( 'Fragment Shader' ).setWidth( '90px' ) );
 	materialFragmentShaderRow.add( materialFragmentShader );
 
-	container.add( materialFragmentShaderRow );
+
+
 
 	// vertex colors
 
@@ -188,7 +188,6 @@ Sidebar.Material = function ( editor ) {
 	materialVertexColorsRow.add( new UI.Text( 'Vertex Colors' ).setWidth( '90px' ) );
 	materialVertexColorsRow.add( materialVertexColors );
 
-	container.add( materialVertexColorsRow );
 
 	// skinning
 
@@ -198,19 +197,23 @@ Sidebar.Material = function ( editor ) {
 	materialSkinningRow.add( new UI.Text( 'Skinning' ).setWidth( '90px' ) );
 	materialSkinningRow.add( materialSkinning );
 
-	container.add( materialSkinningRow );
+
 
 	// map
 
 	var materialMapRow = new UI.Panel();
-	var materialMapEnabled = new UI.Checkbox( false ).onChange( update );
+	var materialMapEnabled = new UI.Checkbox( true ).onChange( update );
 	var materialMap = new UI.Texture().setColor( '#444' ).onChange( update );
 
-	materialMapRow.add( new UI.Text( 'Map' ).setWidth( '90px' ) );
+	if(window.PRODUCTION) {
+		materialMapRow.add( new UI.Text( 'Image' ).setWidth( '90px' ) );
+	} else {
+		materialMapRow.add( new UI.Text( 'Map' ).setWidth( '90px' ) );
+	}
+	
 	materialMapRow.add( materialMapEnabled );
 	materialMapRow.add( materialMap );
 
-	container.add( materialMapRow );
 
 	// alpha map
 
@@ -222,7 +225,6 @@ Sidebar.Material = function ( editor ) {
 	materialAlphaMapRow.add( materialAlphaMapEnabled );
 	materialAlphaMapRow.add( materialAlphaMap );
 
-	container.add( materialAlphaMapRow );
 
 	// light map
 
@@ -234,7 +236,7 @@ Sidebar.Material = function ( editor ) {
 	materialLightMapRow.add( materialLightMapEnabled );
 	materialLightMapRow.add( materialLightMap );
 
-	container.add( materialLightMapRow );
+
 
 	// bump map
 
@@ -248,7 +250,7 @@ Sidebar.Material = function ( editor ) {
 	materialBumpMapRow.add( materialBumpMap );
 	materialBumpMapRow.add( materialBumpScale );
 
-	container.add( materialBumpMapRow );
+
 
 	// normal map
 
@@ -260,7 +262,7 @@ Sidebar.Material = function ( editor ) {
 	materialNormalMapRow.add( materialNormalMapEnabled );
 	materialNormalMapRow.add( materialNormalMap );
 
-	container.add( materialNormalMapRow );
+
 
 	// specular map
 
@@ -272,7 +274,7 @@ Sidebar.Material = function ( editor ) {
 	materialSpecularMapRow.add( materialSpecularMapEnabled );
 	materialSpecularMapRow.add( materialSpecularMap );
 
-	container.add( materialSpecularMapRow );
+	
 
 	// env map
 
@@ -286,7 +288,7 @@ Sidebar.Material = function ( editor ) {
 	materialEnvMapRow.add( materialEnvMap );
 	materialEnvMapRow.add( materialReflectivity );
 
-	container.add( materialEnvMapRow );
+	
 
 	// side
 
@@ -302,7 +304,7 @@ Sidebar.Material = function ( editor ) {
 	materialSideRow.add( new UI.Text( 'Side' ).setWidth( '90px' ) );
 	materialSideRow.add( materialSide );
 
-	container.add( materialSideRow );
+	
 
 	// shading
 
@@ -318,7 +320,7 @@ Sidebar.Material = function ( editor ) {
 	materialShadingRow.add( new UI.Text( 'Shading' ).setWidth( '90px' ) );
 	materialShadingRow.add( materialShading );
 
-	container.add( materialShadingRow );
+	
 
 	// blending
 
@@ -337,7 +339,7 @@ Sidebar.Material = function ( editor ) {
 	materialBlendingRow.add( new UI.Text( 'Blending' ).setWidth( '90px' ) );
 	materialBlendingRow.add( materialBlending );
 
-	container.add( materialBlendingRow );
+	
 
 	// opacity
 
@@ -347,7 +349,7 @@ Sidebar.Material = function ( editor ) {
 	materialOpacityRow.add( new UI.Text( 'Opacity' ).setWidth( '90px' ) );
 	materialOpacityRow.add( materialOpacity );
 
-	container.add( materialOpacityRow );
+	
 
 	// transparent
 
@@ -357,7 +359,7 @@ Sidebar.Material = function ( editor ) {
 	materialTransparentRow.add( new UI.Text( 'Transparent' ).setWidth( '90px' ) );
 	materialTransparentRow.add( materialTransparent );
 
-	container.add( materialTransparentRow );
+	
 
 	// wireframe
 
@@ -369,8 +371,38 @@ Sidebar.Material = function ( editor ) {
 	materialWireframeRow.add( materialWireframe );
 	materialWireframeRow.add( materialWireframeLinewidth );
 
-	container.add( materialWireframeRow );
 
+
+	if(window.PRODUCTION) {
+		container.add( materialMapRow );
+	} else {
+		container.add( materialNameRow );
+		container.add( materialUUIDRow );
+		container.add( materialClassRow );
+		container.add( materialColorRow );
+		container.add( materialSpecularRow );
+		container.add( materialEmissiveRow );
+		container.add( materialAmbientRow );
+		container.add( materialShininessRow );
+		container.add( materialUniformsRow );
+		container.add( materialVertexShaderRow );
+		container.add( materialFragmentShaderRow );
+		container.add( materialVertexColorsRow );
+		container.add( materialSkinningRow );
+		container.add( materialMapRow );
+		container.add( materialAlphaMapRow );
+		container.add( materialLightMapRow );
+		container.add( materialBumpMapRow );
+		container.add( materialNormalMapRow );
+		container.add( materialSpecularMapRow );
+		container.add( materialEnvMapRow );
+		container.add( materialSideRow );
+		container.add( materialShadingRow );
+		container.add( materialBlendingRow );
+		container.add( materialOpacityRow );
+		container.add( materialTransparentRow );
+		container.add( materialWireframeRow );
+	}
 	//
 
 	function update() {
