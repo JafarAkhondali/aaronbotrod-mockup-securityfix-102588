@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js / editor</title>
+		<title>Modelo</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	</head>
@@ -22,7 +22,6 @@
 		<script src="../examples/js/loaders/SceneLoader.js"></script>
 		<script src="../examples/js/loaders/STLLoader.js"></script>
 		<script src="../examples/js/loaders/UTF8Loader.js"></script>
-		<script src="../examples/js/loaders/TGALoader.js"></script>
 		<script src="../examples/js/loaders/VRMLLoader.js"></script>
 		<script src="../examples/js/loaders/VTKLoader.js"></script>
 		<script src="../examples/js/loaders/ctm/lzma.js"></script>
@@ -89,7 +88,8 @@
 		<script src="js/Viewport.Info.js"></script>
 
 		<script>
-
+			window.PRODUCTION = window.location.search.indexOf("dev=1") == -1;
+			console.log(window.location.search.indexOf("dev=1") != -1, window.location.search.indexOf("dev=1"));
 			window.URL = window.URL || window.webkitURL;
 			window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
 
@@ -102,26 +102,26 @@
 			var editor = new Editor();
 
 			var viewport = new Viewport( editor );
-			document.body.appendChild( viewport.dom );
-
 			var script = new Script( editor );
-			document.body.appendChild( script.dom );
-
 			var player = new Player( editor );
+			var toolbar = new Toolbar( editor );
+			var menubar = new Menubar( editor );
+			var sidebar = new Sidebar( editor );
+			var dialog = new UI.Dialog();
+
+			document.body.appendChild( viewport.dom );
+			document.body.appendChild( menubar.dom );
+			document.body.appendChild( script.dom );
 			document.body.appendChild( player.dom );
 
-			var toolbar = new Toolbar( editor );
-			// document.body.appendChild( toolbar.dom );
-
-			var menubar = new Menubar( editor );
-			document.body.appendChild( menubar.dom );
-
-			var sidebar = new Sidebar( editor );
-			document.body.appendChild( sidebar.dom );
-
-			var dialog = new UI.Dialog();
 			document.body.appendChild( dialog.dom );
-
+			if(! window.PRODUCTION) {
+				document.body.appendChild( toolbar.dom );
+				document.body.appendChild( sidebar.dom );
+			} else {
+				//Number in toolbar
+				editor.signals.snapChanged.dispatch(25);
+			}
 			//
 
 			editor.setTheme( editor.config.getKey( 'theme' ) );

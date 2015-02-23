@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "version": 4.3,
+    "type": "Object",
+    "generator": "ObjectExporter"
+  },
+  "geometries": [
+    {
+      "uuid": "0F1C03C6-482C-4E71-AAB1-61B53FE34BAD",
+      "type": "BoxGeometry",
+      "width": 100,
+      "height": 100,
+      "depth": 100,
+      "widthSegments": 1,
+      "heightSegments": 1,
+      "depthSegments": 1
+    },
+    {
+      "uuid": "6F2539B2-D3F0-4F27-AF6E-53A4AAF1E274",
+      "type": "PlaneGeometry",
+      "width": 1000,
+      "height": 1000,
+      "widthSegments": 1,
+      "heightSegments": 1
+    }],
+  "materials": [
+    {
+      "uuid": "AF87FC0F-88AF-48D8-BC01-5F233D64B17A",
+      "type": "MeshPhongMaterial",
+      "color": 16777215,
+      "ambient": 16777215,
+      "emissive": 0,
+      "specular": 1118481,
+      "shininess": 30
+    },
+    {
+      "uuid": "82DA5392-4BAF-4D37-A2C8-07A960E07685",
+      "type": "MeshPhongMaterial",
+      "color": 16777215,
+      "ambient": 16777215,
+      "emissive": 0,
+      "specular": 1118481,
+      "shininess": 30
+    }],
+  "object": {
+    "uuid": "3741222A-BD8F-401C-A5D2-5A907E891896",
+    "type": "Scene",
+    "name": "Scene",
+    "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+    "children": [
+      {
+        "uuid": "91AECDE3-47E3-4B07-A355-B8E533868D9F",
+        "type": "Mesh",
+        "name": "Box 1",
+        "geometry": "0F1C03C6-482C-4E71-AAB1-61B53FE34BAD",
+        "material": "AF87FC0F-88AF-48D8-BC01-5F233D64B17A",
+        "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-312.7632751464844,0,-333.6167907714844,1]
+      },
+      {
+        "uuid": "4ED453F4-40E3-49F4-A722-677D08424C08",
+        "type": "PointLight",
+        "name": "PointLight 1",
+        "color": 16777215,
+        "intensity": 1,
+        "distance": 0,
+        "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,130.4122314453125,855.676025390625,136.8035125732422,1]
+      },
+      {
+        "uuid": "2CE15104-E121-4C7C-A820-F1E680727F3B",
+        "type": "Mesh",
+        "name": "Plane 2",
+        "geometry": "6F2539B2-D3F0-4F27-AF6E-53A4AAF1E274",
+        "material": "82DA5392-4BAF-4D37-A2C8-07A960E07685",
+        "matrix": [1,0,0,0,0,0.010796116665005684,-0.9999417066574097,0,0,0.9999417066574097,0.010796116665005684,0,0,-50,0,1]
+      }]
+  }
+}

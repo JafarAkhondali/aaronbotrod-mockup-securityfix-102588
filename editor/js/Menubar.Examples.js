@@ -19,9 +19,11 @@ Menubar.Examples = function ( editor ) {
 	// Examples
 
 	var items = [
-		{ title: 'Camera', file: 'camera.app.json' },
-		{ title: 'Particles', file: 'particles.app.json' },
-		{ title: 'Pong', file: 'pong.app.json' }
+		// { title: 'Camera', file: 'camera.app.json' },
+		// { title: 'Particles', file: 'particles.app.json' },
+		// { title: 'Pong', file: 'pong.app.json' },
+		{ title: 'Mug', file: 'mug.app.json' },
+		{ title: 'Box', file: 'box.app.json' }
 	];
 
 	var loader = new THREE.XHRLoader();

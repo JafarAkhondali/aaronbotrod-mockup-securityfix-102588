@@ -801,7 +801,7 @@ UI.Number = function ( number ) {
 	var prevPointer = new THREE.Vector2();
 
 	var onMouseDown = function ( event ) {
-		console.log(event);
+
 		event.preventDefault();
 
 		distance = 0;

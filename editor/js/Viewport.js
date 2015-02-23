@@ -10,8 +10,12 @@ var Viewport = function ( editor ) {
 	container.setId( 'viewport' );
 	container.setPosition( 'absolute' );
 
-	//container.add( new Viewport.Info( editor ) );
-
+	if(!window.PRODUCTION) {
+		container.add( new Viewport.Info( editor ) );
+	} else {
+		container.setBottom(0);
+		container.setRight(0);
+	}
 	var scene = editor.scene;
 	var sceneHelpers = editor.sceneHelpers;
 
@@ -27,7 +31,7 @@ var Viewport = function ( editor ) {
 	var camera = editor.camera;
 	camera.position.fromArray( editor.config.getKey( 'camera/position' ) );
 	camera.lookAt( new THREE.Vector3().fromArray( editor.config.getKey( 'camera/target' ) ) );
-
+	console.log(camera);
 	//
 
 	var selectionBox = new THREE.BoxHelper();
@@ -38,7 +42,7 @@ var Viewport = function ( editor ) {
 
 	var transformControls = new THREE.TransformControls( camera, container.dom );
 	transformControls.addEventListener( 'change', function () {
-		console.log(arguments);
+
 		var object = transformControls.object;
 
 		if ( object !== undefined ) {
@@ -54,17 +58,7 @@ var Viewport = function ( editor ) {
 		render();
 
 	} );
-	transformControls.addEventListener( 'mouseDown', function () {
 
-		controls.enabled = false;
-
-	} );
-	transformControls.addEventListener( 'mouseUp', function () {
-
-		signals.objectChanged.dispatch( transformControls.object );
-		// controls.enabled = true;
-
-	} );
 
 	sceneHelpers.add( transformControls );
 
@@ -215,8 +209,29 @@ var Viewport = function ( editor ) {
 	// otherwise controls.enabled doesn't work.
 
 	var controls = new THREE.EditorControls( camera, container.dom );
-	controls.enabled = false;
 	controls.center.fromArray( editor.config.getKey( 'camera/target' ) );
+
+
+	if(window.PRODUCTION) {
+		controls.enabled = false;
+	}
+
+	transformControls.addEventListener( 'mouseDown', function () {
+
+		controls.enabled = false;
+
+	} );
+	transformControls.addEventListener( 'mouseUp', function () {
+
+		signals.objectChanged.dispatch( transformControls.object );
+		if(window.PRODUCTION) {
+			controls.enabled = false;
+		} else {
+			controls.enabled = true;
+		}
+	} );
+
+
 	controls.addEventListener( 'change', function () {
 
 		transformControls.update();
@@ -302,7 +317,6 @@ var Viewport = function ( editor ) {
 			clearTimeout( saveTimeout );
 
 		}
-
 		saveTimeout = setTimeout( function () {
 
 			editor.config.setKey(
@@ -483,7 +497,6 @@ var Viewport = function ( editor ) {
 
 		camera.aspect = container.dom.offsetWidth / container.dom.offsetHeight;
 		camera.updateProjectionMatrix();
-
 		renderer.setSize( container.dom.offsetWidth, container.dom.offsetHeight );
 
 		render();
