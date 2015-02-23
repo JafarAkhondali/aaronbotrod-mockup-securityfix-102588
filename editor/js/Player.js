@@ -11,6 +11,11 @@ var Player = function ( editor ) {
 	container.setPosition( 'absolute' );
 	container.setDisplay( 'none' );
 
+	if(window.PRODUCTION) {
+		container.setBottom(0);
+		container.setRight(0);
+	}
+
 	//
 
 	var player = new APP.Player();

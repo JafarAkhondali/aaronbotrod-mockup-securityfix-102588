@@ -403,8 +403,8 @@ Editor.prototype = {
 
 	clear: function () {
 
-		this.camera.position.set( 0, 1000, 0 );
-		this.camera.lookAt( new THREE.Vector3() );
+		this.camera.position.fromArray( this.config.getKey( 'camera/position' ) );
+		this.camera.lookAt( new THREE.Vector3().fromArray( this.config.getKey( 'camera/target' ) ) );
 
 		var objects = this.scene.children;
 
